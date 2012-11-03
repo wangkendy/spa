@@ -26,6 +26,7 @@
 /////////////////////////////////////////////
 
 #include <stdio.h>
+#include <time.h>
 #include "spa.h"  //include the SPA header file
 
 int main (int argc, char *argv[])
@@ -33,24 +34,38 @@ int main (int argc, char *argv[])
     spa_data spa;  //declare the SPA structure
     int result;
     float min, sec;
+	time_t cur_time;
+	struct tm *my;
+
+	time(&cur_time);
+	my = gmtime(&cur_time);
+	printf("current time is:%d\n", cur_time);
+	printf("current time %d-%d-%d %d:%d:%d\n", my->tm_year + 1900,
+			my->tm_mon + 1, my->tm_mday, my->tm_hour,
+			my->tm_min, my->tm_sec);
+
+
+	//how to get latitude and longitude on google:void(prompt('',gApplication.getMap().getCenter()));
+	//latitude longitude f BUPT 
+	//(39.974160287681954, 116.35800361633301)
 
     //enter required input values into SPA structure
 
-    spa.year          = 2003;
-    spa.month         = 10;
-    spa.day           = 17;
-    spa.hour          = 12;
-    spa.minute        = 30;
-    spa.second        = 30;
-    spa.timezone      = -7.0;
+    spa.year          = my->tm_year + 1900;
+    spa.month         = my->tm_mon + 1;
+    spa.day           = my->tm_mday;
+    spa.hour          = my->tm_hour;
+    spa.minute        = my->tm_min;
+    spa.second        = my->tm_sec;
+    spa.timezone      = 8;
     spa.delta_t       = 67;
-    spa.longitude     = -105.1786;
-    spa.latitude      = 39.742476;
-    spa.elevation     = 1830.14;
+    spa.longitude     = 116.358;
+    spa.latitude      = 39.974;
+    spa.elevation     = 100;
     spa.pressure      = 820;
     spa.temperature   = 11;
-    spa.slope         = 30;
-    spa.azm_rotation  = -10;
+    spa.slope         = 0;//30;
+    spa.azm_rotation  = 0;//-10;
     spa.atmos_refract = 0.5667;
     spa.function      = SPA_ALL;
 
@@ -72,6 +87,7 @@ int main (int argc, char *argv[])
         printf("Epsilon:       %.6f degrees\n",spa.epsilon);
         printf("Zenith:        %.6f degrees\n",spa.zenith);
         printf("Azimuth:       %.6f degrees\n",spa.azimuth);
+        printf("Azimuth180:	   %.6f degrees\n",spa.azimuth180);
         printf("Incidence:     %.6f degrees\n",spa.incidence);
 
         min = 60.0*(spa.sunrise - (int)(spa.sunrise));
@@ -82,6 +98,9 @@ int main (int argc, char *argv[])
         sec = 60.0*(min - (int)min);
         printf("Sunset:        %02d:%02d:%02d Local Time\n", (int)(spa.sunset), (int)min, (int)sec);
 
+        min = 60.0*(spa.suntransit- (int)(spa.suntransit));
+        sec = 60.0*(min - (int)min);
+        printf("Suntransit:        %02d:%02d:%02d Local Time\n", (int)(spa.suntransit), (int)min, (int)sec);
     } else printf("SPA Error Code: %d\n", result);
 
     return 0;
