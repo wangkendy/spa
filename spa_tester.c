@@ -38,7 +38,8 @@ int main (int argc, char *argv[])
 	struct tm *my;
 
 	time(&cur_time);
-	my = gmtime(&cur_time);
+	//my = gmtime(&cur_time);
+	my = localtime(&cur_time);
 	printf("current time is:%d\n", cur_time);
 	printf("current time %d-%d-%d %d:%d:%d\n", my->tm_year + 1900,
 			my->tm_mon + 1, my->tm_mday, my->tm_hour,
