@@ -48,11 +48,11 @@ Matrix31 m31_Y_vector()
 	return v;
 }
 
-//Matrix31 m31_Z_vector()
-//{
-//	Matrix31 v;
-//	v.X = 0.0;
-//	v.Y = 0.0;
-//	v.Z = 1.0;
-//	return v;
-//}
+Matrix31 m31_Z_vector()
+{
+	Matrix31 v;
+	v.X = 0.0;
+	v.Y = 0.0;
+	v.Z = 1.0;
+	return v;
+}
