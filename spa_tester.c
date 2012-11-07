@@ -41,7 +41,7 @@ int main (int argc, char *argv[])
 	//my = gmtime(&cur_time);
 	my = localtime(&cur_time);
 	printf("current time is:%d\n", cur_time);
-	printf("current time %d-%d-%d %d:%d:%d\n", my->tm_year + 1900,
+	printf("current time %d-%02d-%02d %02d:%02d:%02d\n", my->tm_year + 1900,
 			my->tm_mon + 1, my->tm_mday, my->tm_hour,
 			my->tm_min, my->tm_sec);
 
@@ -49,6 +49,7 @@ int main (int argc, char *argv[])
 	//how to get latitude and longitude on google:void(prompt('',gApplication.getMap().getCenter()));
 	//latitude longitude f BUPT 
 	//(39.974160287681954, 116.35800361633301)
+	//golmud: 36.34 94.80 elevation:2900
 
     //enter required input values into SPA structure
 
@@ -59,11 +60,11 @@ int main (int argc, char *argv[])
     spa.minute        = my->tm_min;
     spa.second        = my->tm_sec;
     spa.timezone      = 8;
-    spa.delta_t       = 67;
+    spa.delta_t       = 80;//67;
     spa.longitude     = 116.358;
     spa.latitude      = 39.974;
     spa.elevation     = 100;
-    spa.pressure      = 820;
+    spa.pressure      = 1015;
     spa.temperature   = 11;
     spa.slope         = 0;//30;
     spa.azm_rotation  = 0;//-10;
@@ -86,9 +87,9 @@ int main (int argc, char *argv[])
         printf("Delta Psi:     %.6e degrees\n",spa.del_psi);
         printf("Delta Epsilon: %.6e degrees\n",spa.del_epsilon);
         printf("Epsilon:       %.6f degrees\n",spa.epsilon);
-        printf("Zenith:        %.6f degrees\n",spa.zenith);
-        printf("Azimuth:       %.6f degrees\n",spa.azimuth);
-        printf("Azimuth180:	   %.6f degrees\n",spa.azimuth180);
+        printf("Zenith:        %.9f degrees\n",spa.zenith);
+        printf("Azimuth:       %.9f degrees\n",spa.azimuth);
+        printf("Azimuth180:	   %.9f degrees\n",spa.azimuth180);
         printf("Incidence:     %.6f degrees\n",spa.incidence);
 
         min = 60.0*(spa.sunrise - (int)(spa.sunrise));
