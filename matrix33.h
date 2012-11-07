@@ -15,3 +15,5 @@ void m33_row_subtract(Matrix33 *mat, int pos_row, int neg_row);
 void m33_zero_cell(Matrix33 *mat, Matrix33 *invert, int row, int col, int base_row);
 Matrix33 m33_identity();
 #endif ///MATRIX33_H
+
+//test ,added by leimingshan
