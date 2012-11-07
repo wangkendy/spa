@@ -2,6 +2,14 @@
 #include "matrix31.h"
 #include <math.h>
 
+void m33_init(Matrix33 *mat)
+{
+	int i, j;
+	for(i = 0; i < 3; i++)
+		for(j = 0; j < 3; j++)
+			mat->val[i][j] = 0.0;
+}
+
 double m33_get_value(Matrix33 *mat, int row, int col)
 {
 	return mat->val[row][col];
@@ -57,6 +65,7 @@ Matrix33 m33_tilda(Matrix33 *op0)
 	Matrix33 m;
 	Matrix33 op = *op0;
 	double x;
+	m33_init(&m);
 	m.val[0][0] = 1.0;
 	m.val[1][1] = 1.0;
 	m.val[2][2] = 1.0;
@@ -115,6 +124,7 @@ Matrix33 m33_rot(Matrix31 k, double rads)
 Matrix33 m33_rot_X(double rads)
 {
 	Matrix33 m;
+	m33_init(&m);
 //	m.val[0, 0] = 1.0;
 //	m.val[1, 1] = Math.Cos(Rads);
 //	m.val[2, 2] = m.val[1, 1];
@@ -133,6 +143,7 @@ Matrix33 m33_rot_X(double rads)
 Matrix33 m33_rot_Y(double rads)
 {
 	Matrix33 m;
+	m33_init(&m);
 //	m.val[0, 0] = Math.Cos(Rads);
 //	m.val[0, 2] = Math.Sin(Rads);
 //	m.val[1, 1] = 1.0;
@@ -150,6 +161,7 @@ Matrix33 m33_rot_Y(double rads)
 Matrix33 m33_rot_Z(double rads)
 {
 	Matrix33 m;
+	m33_init(&m);
 //	m.val[0, 0] = Math.Cos(Rads);
 //	m.val[0, 1] = -Math.Sin(Rads);
 //	m.val[1, 0] = -m.val[0, 1];
@@ -200,6 +212,7 @@ void m33_zero_cell(Matrix33 *mat, Matrix33 *invert, int row, int col, int base_r
 Matrix33 m33_identity()
 {
 	Matrix33 id;
+	m33_init(&id);
 	id.val[0][0] = 1.0;
 	id.val[1][1] = 1.0;
 	id.val[2][2] = 1.0;

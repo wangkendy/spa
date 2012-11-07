@@ -2,6 +2,7 @@
 #define MATRIX33_H
 #include "matrix.h"
 
+void m33_init(Matrix33 *mat);
 double m33_get_value(Matrix33 *mat, int row, int col);
 Matrix33 m33_multiply(Matrix33 *lhs, Matrix33 *rhs);
 Matrix33 m33_tilda(Matrix33 *mat);
