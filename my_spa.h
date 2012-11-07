@@ -5,6 +5,9 @@
 
 void spa_init(spa_data *spa);
 //void calculate_sunrise_sunset(spa_data *spa);
+struct tm get_sun_rise(spa_data* spa);
+struct tm get_sun_set(spa_data* spa);
+struct tm get_sun_transit(spa_data* spa);
 int calculate_position(spa_data *spa, struct tm *t);
 void set_atmosphere(spa_data *spa, double barometric_pressure_mbar, double temperature_c);
 void set_location(spa_data *spa, double longitude, double latitude, double elevation);
