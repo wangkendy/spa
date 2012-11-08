@@ -225,7 +225,7 @@ void m33_print(Matrix33 *mat)
 	int i, j;
 	for(i = 0; i < 3; i++) {
 		for(j = 0; j < 3; j++)
-			printf("%d ", mat->val[i][j]);
+			printf("%f\t", mat->val[i][j]);
 		printf("\n");
 	}
 }
