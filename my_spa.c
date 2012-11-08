@@ -96,5 +96,5 @@ double get_azimuth_angle(spa_data* spa)
 
 double get_elevation_angle(spa_data* spa)
 {
-	return spa->zenith;
+	return (90.0 - spa->zenith);
 }
