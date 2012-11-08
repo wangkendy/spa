@@ -2,8 +2,9 @@
 
 void spa_init(spa_data *spa)
 {
+	long tz;
 	tzset(); // set timezone
-	long tz = (-timezone) / 3600;
+	tz = (-timezone) / 3600;
 	spa->timezone      = tz;
 	spa->delta_t       = 80;
 	//spa.longitude     = 116.358;
