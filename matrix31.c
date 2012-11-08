@@ -9,6 +9,7 @@ double m31_get_value(Matrix31 *mat, int row)
 		return mat->Y;
 	if(row == 2)
 		return mat->Z;
+	return 0.0;
 }
 
 double m31_and(Matrix31 *lhs, Matrix31 *rhs)
