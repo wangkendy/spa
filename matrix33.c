@@ -1,6 +1,7 @@
 #include "matrix33.h"
 #include "matrix31.h"
 #include <math.h>
+#include <stdio.h>
 
 void m33_init(Matrix33 *mat)
 {
@@ -170,7 +171,7 @@ Matrix33 m33_rot_Z(double rads)
 	m.val[0][0] = cos(rads);
 	m.val[0][1] = -sin(rads);
 	m.val[1][0] = -m.val[0][1];
-	m.val[1][0] = m.val[0][0];
+	m.val[1][1] = m.val[0][0];
 	m.val[2][2] = 1.0;
 	return m;
 }
@@ -217,4 +218,14 @@ Matrix33 m33_identity()
 	id.val[1][1] = 1.0;
 	id.val[2][2] = 1.0;
 	return id;
+}
+
+void m33_print(Matrix33 *mat)
+{
+	int i, j;
+	for(i = 0; i < 3; i++) {
+		for(j = 0; j < 3; j++)
+			printf("%d ", mat->val[i][j]);
+		printf("\n");
+	}
 }
